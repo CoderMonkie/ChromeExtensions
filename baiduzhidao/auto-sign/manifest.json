@@ -1,0 +1,24 @@
+/*
+  copyright & author : maonianyou@gmail.com
+  chrome extension for auto sign [zhidao.baidu.com]
+  2018/01/12
+*/
+{
+  "name": "auto sign",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "zhidao.baidu-AutoSign",
+  "browser_action": {
+    //"default_icon": ""
+  },
+  "permissions": [
+        "tabs", "http://*/*","https://*/*"
+  ],
+  "content_scripts": [
+   {
+      "matches": ["https://zhidao.baidu.com/","https://zhidao.baidu.com/*"],
+      "js": ["js/jquery-3.2.1.min.js","js/AutoSign.js"],
+      "run_at":"document_end"
+   }
+  ]
+}

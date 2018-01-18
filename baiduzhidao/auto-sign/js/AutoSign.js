@@ -24,7 +24,7 @@ else if($(".go-sign-in").length <= 0){
 	
 	//open the [sign] dialog
 	
-	while($("#sign-in-btn").length <= 0){
+	while($("#sign-in-btn").length < 1){
 		//console.log("wait for sign-dialog show");
 	}
 	

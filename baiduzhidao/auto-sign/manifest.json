@@ -12,7 +12,7 @@
     //"default_icon": ""
   },
   "permissions": [
-        "tabs", "http://*/*","https://*/*"
+        "tabs", "https://zhidao.baidu.com/","https://zhidao.baidu.com/*"
   ],
   "content_scripts": [
    {

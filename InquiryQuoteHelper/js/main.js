@@ -1,10 +1,12 @@
 /*
   copyright & author : mao.nianyou@fujisoft-china.com
-  chrome extension for inquiry [http://47.92.82.127/Lord.aspx]
+  chrome extension for InquiryQuote [http://47.92.82.127/Lord.aspx]
   2018/01/12
   http://47.92.82.127/System/SysFastLogin.aspx?target=http%3A//47.92.82.127/Lord.aspx
   http://47.92.82.127/Lord.aspx
   2018/01/28 First time release.
+  2018/01/29 BugFix:when there is no-hisotry record, or no-hit, the auto-work stopped.
+             ->add default data to change the status of the task
 */
 
 console.log('MAuto-Helper start-work');
@@ -53,6 +55,12 @@ function saveTaskInfo(){
 		setTimeout('saveTaskInfo()', 600);
         return;
     }
+    if($('#202010_IFrame').contents().find('.x-grid3-body').length < 0)
+    {
+		console.log('task-show : waiting');
+		setTimeout('saveTaskInfo()', 600);
+        return;
+    }
 
 	var row1 = ($('#202010_IFrame').contents().find(".x-grid3-row-first"));
 	
@@ -79,7 +87,7 @@ function showQuoteHistory(){
 		if($($(this)[0]).text()=="找货记录"){
 			console.log($($(this)[0]).text());
 			$($(this)[0]).click();
-			setTimeout(function(){searchHistoryInfo()}, 100);
+			setTimeout(function(){searchHistoryInfo(0)}, 500);
     		return false;
     	}
     	else{
@@ -95,7 +103,7 @@ function searchHistoryInfo(n){
 	        if($('#201041_IFrame').length < 1 || $('#201041_IFrame').contents().find('.x-grid3-body').length<1){
                 //wait for loading 'Quote history'
 	            console.log('history-show : waiting');
-                setTimeout(function(){searchHistoryInfo(0)}, 100);
+                setTimeout(function(){searchHistoryInfo(0)}, 500);
                 return;
             }
             searchHistoryInfo(1);
@@ -106,7 +114,7 @@ function searchHistoryInfo(n){
             var loading = $('#201041_IFrame').contents().find('.x-mask-loading');
             if($(mask).length > 0 || $(loading).length>0){
                 console.log('HisSearchResult:loading');
-                setTimeout(function(){ searchHistoryInfo(1) }, 100);
+                setTimeout(function(){ searchHistoryInfo(1) }, 500);
                 return;
             }
             searchHistoryInfo(2);

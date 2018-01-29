@@ -1,12 +1,13 @@
 /*
   copyright & author : mao.nianyou@fujisoft-china.com
-  chrome extension for inquiry [http://47.92.82.127/Lord.aspx]
+  chrome extension for InquiryQuote [http://47.92.82.127/Lord.aspx]
   2018/01/12
   http://47.92.82.127/System/SysFastLogin.aspx?target=http%3A//47.92.82.127/Lord.aspx
   http://47.92.82.127/Lord.aspx
   http://47.92.82.127/Crm/Ask/AskOrderDetail_Edit.aspx?KeyString=
   2018/01/28 First time release.
-  2018/01/29 BugFix:when there is no-hisotry record,the auto-work stopped.
+  2018/01/29 BugFix:when there is no-hisotry record, or no-hit, the auto-work stopped.
+             ->add default data to change the status of the task
 */
 
 console.log('AskOrderDetail_Edit:DomLoaded');

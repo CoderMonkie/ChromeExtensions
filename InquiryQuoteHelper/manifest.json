@@ -1,13 +1,13 @@
 /*
   copyright & author : mao.nianyou@fujisoft-china.com
-  chrome extension for inquiry [http://47.92.82.127/Lord.aspx]
+  chrome extension for InquiryQuote [http://47.92.82.127/Lord.aspx]
   2018/01/12
 */
 {
     "name": "MAuto",
     "manifest_version": 2,
-    "version": "1.0",
-    "description": "自动化实现将任务中未开始的询单里添加进历史供应商信息",
+    "version": "1.0.1",
+    "description": "自动化实现向任务中未开始的询单里添加进有报价历史记录的供应商信息",
     "browser_action": {
         //"default_icon": "tulip.jpg",
         //"default_popup": "popup.html"
@@ -32,6 +32,5 @@
             "js": ["js/jquery-3.2.1.min.js","js/detailEdit.js"],
             "run_at":"document_end"
         }
-    ],
-    "web_accessible_resources": ["js/jquery-3.2.1.min.js", "js/injectToEditPage.js"]
+    ]
 }

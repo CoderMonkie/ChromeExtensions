@@ -7,6 +7,8 @@
   2018/01/28 First time release.
   2018/01/29 BugFix:when there is no-hisotry record, or no-hit, the auto-work stopped.
              ->add default data to change the status of the task
+  2018/01/30 BugFix:when show task list, condition of check for loading is wrong.
+             0 ⇒ 1.
 */
 
 console.log('MAuto-Helper start-work');
@@ -36,28 +38,33 @@ function showMyTask(){
 
 // Save first task info
 function saveTaskInfo(){
-
+    if($('#202010').children().length<1){
+		console.log('task-show : waiting : div202010');
+		setTimeout('saveTaskInfo()', 600);
+        return;
+    }
     if($('#202010_IFrame').length<1){
-		console.log('task-show : waiting');
+		console.log('task-show : waiting : 202010_IFrame');
 		setTimeout('saveTaskInfo()', 600);
         return;
     }
     if($('#202010_IFrame').contents().find('.ext-el-mask').length > 0 ||
         $('#202010_IFrame').contents().find('.x-mask-loading').length>0){
         //wait for loading 'my tasks'
-		console.log('task-show : waiting');
+		console.log('task-show : loading');
 		setTimeout('saveTaskInfo()', 1000);
         return;
     }
-    if($('#202010_IFrame').contents().find('.x-grid3-header').length < 0)
+    
+    if($('#202010_IFrame').contents().find('.x-grid3-header').length < 1)
     {
-		console.log('task-show : waiting');
+		console.log('task-show : waiting : x-grid3-header');
 		setTimeout('saveTaskInfo()', 600);
         return;
     }
-    if($('#202010_IFrame').contents().find('.x-grid3-body').length < 0)
+    if($('#202010_IFrame').contents().find('.x-grid3-body').length < 1)
     {
-		console.log('task-show : waiting');
+		console.log('task-show : waiting : x-grid3-body');
 		setTimeout('saveTaskInfo()', 600);
         return;
     }

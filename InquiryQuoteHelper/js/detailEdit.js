@@ -20,7 +20,7 @@ chrome.extension.sendMessage({'action': 'getSupplier', 'data': {}},function(data
     if(data!=undefined && data!=null && data!=''){
 	    arrSupplier = data.split(',');
     }
-	console.log('SupplierNum List to process:[' + arrSupplier + '] 共' + arrSupplier.length + '条');
+	console.log('SupplierNum List to process:[' + arrSupplier + '] Total Count:' + arrSupplier.length);
     
     // Start working from here
     setTimeout("domReady()", 500);
@@ -96,6 +96,11 @@ function searchSupplier(i){
             return;
         case 3:
             var btnNewDetailRow = $("iframe").contents().find('#ctl00_ctl00_Body_Center_ToolbarButton1 .icon-newred');
+            if($(btnNewDetailRow).length < 1){
+                console.log('wait for NewDetailRow button');
+                setTimeout(function(){searchSupplier(3);}, 500);
+                return;
+            }
             console.log('新增行');
             $(btnNewDetailRow).click();
             

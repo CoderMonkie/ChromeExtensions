@@ -1,0 +1,17 @@
+{
+  "name": "BDSignTask",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "daily-sign task of baidu (zhidao, and wenku)",
+  "page_action":{},
+  "permissions": [
+        "tabs"
+  ],
+  "content_scripts": [
+   {
+      "matches": ["https://zhidao.baidu.com/","https://zhidao.baidu.com/*", "https://wenku.baidu.com/", "https://wenku.baidu.com/*", "https://wenku.baidu.com/task/browse/daily"],
+      "js": ["js/doSign.js"],
+      "run_at":"document_end"
+   }
+  ]
+}
